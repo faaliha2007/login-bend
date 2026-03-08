@@ -25,5 +25,16 @@ app.post("/login",function(req,res)
     }
 })
 
+ app.get("/login", function(req, res) {
+    const { username, password } = req.query;
+    console.log("GET login:", username);
+
+    if(username === uname && Number(password) === pass) {
+        res.send(true);
+    } else {
+        res.send(false);
+    }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
